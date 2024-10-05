@@ -1,0 +1,34 @@
+package com.spring.crud.service.impl;
+
+import com.spring.crud.dao.entity.Status;
+import com.spring.crud.dao.entity.Student;
+import com.spring.crud.dao.repository.StudentRepository;
+import com.spring.crud.model.StudentForRequest;
+import com.spring.crud.service.StudentService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.Collections;
+
+@Service
+@Slf4j
+@RequiredArgsConstructor
+public class StudentServiceImpl implements StudentService {
+
+    private final StudentRepository studentRepository;
+
+    @Override
+    public Student createStudent(final StudentForRequest studentrq) {
+        final Instant now = Instant.now();
+        return studentRepository.save(Student.builder()
+                                             .name(studentrq.name())
+                                             .email(studentrq.email())
+                                             .courses(Collections.emptySet())
+                                             .createdAt(now)
+                                             .updatedAt(now)
+                                             .status(Status.ACTIVE)
+                                             .build());
+    }
+}
