@@ -18,7 +18,7 @@ import java.util.Collections;
 @RequestMapping("/api/v1/students")
 @RequiredArgsConstructor
 public class StudentController {
-    private StudentService studentService;
+    private final StudentService studentService;
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

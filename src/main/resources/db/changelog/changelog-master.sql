@@ -2,7 +2,7 @@
 --changeset admin
 --comment creating db
 CREATE TABLE IF NOT EXISTS students (
-    id         BIGINT PRIMARY KEY NOT NULL,
+    id BIGSERIAL PRIMARY KEY,
     name       VARCHAR(100)       NOT NULL,
     email      VARCHAR(75) UNIQUE NOT NULL,
     created_at TIMESTAMPTZ,
