@@ -7,5 +7,5 @@ CREATE TABLE IF NOT EXISTS students (
     email      VARCHAR(75) UNIQUE NOT NULL,
     created_at TIMESTAMPTZ,
     updated_at TIMESTAMPTZ,
-    status     VARCHAR(10)        NOT NULL
+    status SMALLINT NOT NULL
 );
