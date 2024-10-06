@@ -15,3 +15,10 @@ CREATE TABLE IF NOT EXISTS course_management.courses (
     updated_at TIMESTAMPTZ,
     status     SMALLINT     NOT NULL
 );
+CREATE TABLE IF NOT EXISTS course_management.teachers (
+    id         BIGSERIAL PRIMARY KEY,
+    name       VARCHAR(100) NOT NULL,
+    created_at TIMESTAMPTZ,
+    updated_at TIMESTAMPTZ,
+    status     SMALLINT     NOT NULL
+);
