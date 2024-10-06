@@ -2,12 +2,13 @@ package com.spring.crud.service.impl;
 
 import com.spring.crud.dao.entity.Status;
 import com.spring.crud.dao.entity.Student;
-import com.spring.crud.dao.repository.StudentRepository;
+import com.spring.crud.dao.repository.jpa.StudentRepository;
 import com.spring.crud.model.StudentForRequest;
 import com.spring.crud.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.Collections;
@@ -20,6 +21,7 @@ public class StudentServiceImpl implements StudentService {
     private final StudentRepository studentRepository;
 
     @Override
+    @Transactional
     public Student createStudent(final StudentForRequest studentrq) {
         final Instant now = Instant.now();
         return studentRepository.save(Student.builder()
