@@ -5,9 +5,9 @@ import com.spring.crud.dao.entity.Status;
 import com.spring.crud.dao.entity.Student;
 import com.spring.crud.dao.entity.Teacher;
 import com.spring.crud.model.StudentResponse;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mapstruct.factory.Mappers;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.Instant;
 import java.util.Collections;
@@ -15,14 +15,15 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-
+@SpringBootTest
 class StudentMapperTest {
+    @Autowired
     private StudentMapper studentMapper;
 
-    @BeforeEach
-    void setUp() {
-        studentMapper = Mappers.getMapper(StudentMapper.class);
-    }
+    @Autowired
+    private CourseMapper courseMapper;
+
+
 
     @Test
     void studentToResponse() {
@@ -51,6 +52,7 @@ class StudentMapperTest {
 
         assertThat(result).isNotNull();
         assertThat(result.name()).isEqualTo(student.getName());
+        assertThat(result.courses()).isNotNull();
 
     }
 
