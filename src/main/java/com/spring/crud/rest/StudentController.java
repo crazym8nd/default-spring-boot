@@ -24,7 +24,6 @@ public class StudentController {
     @ResponseStatus(HttpStatus.CREATED)
     public StudentResponse createStudent(@RequestBody final StudentForRequest student) {
         final Student createdStudent = studentService.createStudent(student);
-
         return studentMapper.studentToResponse(createdStudent);
     }
 

@@ -24,7 +24,6 @@ class StudentMapperTest {
     private CourseMapper courseMapper;
 
 
-
     @Test
     void studentToResponse() {
         final Instant now = Instant.now();
