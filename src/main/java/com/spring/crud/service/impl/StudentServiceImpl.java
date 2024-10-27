@@ -6,6 +6,7 @@ import com.spring.crud.dao.repository.jpa.StudentRepository;
 import com.spring.crud.exception.StudentNotFoundException;
 import com.spring.crud.model.request_dto.StudentForRequest;
 import com.spring.crud.model.request_dto.StudentForUpdate;
+import com.spring.crud.model.response_dto.InformationResponse;
 import com.spring.crud.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -60,8 +61,26 @@ public class StudentServiceImpl implements StudentService {
                                                           .createdAt(studentBeforeUpdate.getCreatedAt())
                                                           .updatedAt(Instant.now())
                                                           .status(studentBeforeUpdate.getStatus())
+                                                          .courses(studentBeforeUpdate.getCourses() !=
+                                                                   null ? studentBeforeUpdate.getCourses() : Collections.emptySet())
                                                           .build();
                     return studentRepository.save(updatedStudent);
+                })
+                .orElseThrow(() -> new StudentNotFoundException(
+                        "Student with ID " + studentId + " not found",
+                        "/api/v1/students/" + studentId
+                ));
+    }
+
+    @Override
+    @Transactional
+    public InformationResponse deleteStudentById(final Long studentId) {
+        return getStudentById(studentId)
+                .map(studentBeforeDelete -> {
+                    studentBeforeDelete.setUpdatedAt(Instant.now());
+                    studentBeforeDelete.setStatus(Status.DELETED);
+                    studentRepository.save(studentBeforeDelete);
+                    return new InformationResponse("Student deleted successfully");
                 })
                 .orElseThrow(() -> new StudentNotFoundException(
                         "Student with ID " + studentId + " not found",
