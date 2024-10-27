@@ -3,7 +3,9 @@ package com.spring.crud.service.impl;
 import com.spring.crud.dao.entity.Status;
 import com.spring.crud.dao.entity.Student;
 import com.spring.crud.dao.repository.jpa.StudentRepository;
-import com.spring.crud.model.StudentForRequest;
+import com.spring.crud.exception.StudentNotFoundException;
+import com.spring.crud.model.request_dto.StudentForRequest;
+import com.spring.crud.model.request_dto.StudentForUpdate;
 import com.spring.crud.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -44,5 +46,26 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Optional<Student> getStudentById(final Long studentId) {
         return studentRepository.findById(studentId);
+    }
+
+    @Override
+    @Transactional
+    public Student updateStudentById(final Long studentId, final StudentForUpdate studentForUpdate) {
+        return getStudentById(studentId)
+                .map(studentBeforeUpdate -> {
+                    final Student updatedStudent = Student.builder()
+                                                          .id(studentBeforeUpdate.getId())
+                                                          .name(studentForUpdate.name())
+                                                          .email(studentForUpdate.email())
+                                                          .createdAt(studentBeforeUpdate.getCreatedAt())
+                                                          .updatedAt(Instant.now())
+                                                          .status(studentBeforeUpdate.getStatus())
+                                                          .build();
+                    return studentRepository.save(updatedStudent);
+                })
+                .orElseThrow(() -> new StudentNotFoundException(
+                        "Student with ID " + studentId + " not found",
+                        "/api/v1/students/" + studentId
+                ));
     }
 }

@@ -1,8 +1,8 @@
 package com.spring.crud.rest;
 
 import com.spring.crud.dao.entity.Teacher;
-import com.spring.crud.model.TeacherForRequest;
-import com.spring.crud.model.TeacherResponse;
+import com.spring.crud.model.request_dto.TeacherForRequest;
+import com.spring.crud.model.response_dto.TeacherResponse;
 import com.spring.crud.service.TeacherService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

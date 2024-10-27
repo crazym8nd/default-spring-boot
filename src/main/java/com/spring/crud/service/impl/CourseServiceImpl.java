@@ -3,7 +3,7 @@ package com.spring.crud.service.impl;
 import com.spring.crud.dao.entity.Course;
 import com.spring.crud.dao.entity.Status;
 import com.spring.crud.dao.repository.jpa.CourseRepository;
-import com.spring.crud.model.CourseForRequest;
+import com.spring.crud.model.request_dto.CourseForRequest;
 import com.spring.crud.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional
-    public Course createCourse(CourseForRequest courserq) {
+    public Course createCourse(final CourseForRequest courserq) {
         final Instant now = Instant.now();
 
         return courseRepository.save(Course.builder()

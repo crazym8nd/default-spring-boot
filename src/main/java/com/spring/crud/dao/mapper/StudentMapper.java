@@ -1,7 +1,7 @@
 package com.spring.crud.dao.mapper;
 
 import com.spring.crud.dao.entity.Student;
-import com.spring.crud.model.StudentResponse;
+import com.spring.crud.model.response_dto.StudentResponse;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring", uses = {CourseMapper.class})

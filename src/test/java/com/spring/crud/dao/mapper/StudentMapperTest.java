@@ -4,7 +4,7 @@ import com.spring.crud.dao.entity.Course;
 import com.spring.crud.dao.entity.Status;
 import com.spring.crud.dao.entity.Student;
 import com.spring.crud.dao.entity.Teacher;
-import com.spring.crud.model.StudentResponse;
+import com.spring.crud.model.response_dto.StudentResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

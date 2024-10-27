@@ -1,4 +1,4 @@
-package com.spring.crud.model;
+package com.spring.crud.model.response_dto;
 
 import java.util.Set;
 

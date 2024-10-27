@@ -1,8 +1,8 @@
 package com.spring.crud.rest;
 
 import com.spring.crud.dao.entity.Department;
-import com.spring.crud.model.DepartmentForRequest;
-import com.spring.crud.model.DepartmentResponse;
+import com.spring.crud.model.request_dto.DepartmentForRequest;
+import com.spring.crud.model.response_dto.DepartmentResponse;
 import com.spring.crud.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,8 +20,8 @@ public class DepartmentController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public DepartmentResponse createDepartment(@RequestBody DepartmentForRequest departmentrq) {
-        Department createdDepartment = departmentService.createDepartment(departmentrq);
+    public DepartmentResponse createDepartment(@RequestBody final DepartmentForRequest departmentrq) {
+        final Department createdDepartment = departmentService.createDepartment(departmentrq);
 
         return new DepartmentResponse(createdDepartment.getId(), createdDepartment.getName(), null);
     }

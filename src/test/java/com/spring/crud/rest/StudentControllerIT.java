@@ -1,7 +1,7 @@
 package com.spring.crud.rest;
 
-import com.spring.crud.model.StudentForRequest;
-import com.spring.crud.model.StudentResponse;
+import com.spring.crud.model.request_dto.StudentForRequest;
+import com.spring.crud.model.response_dto.StudentResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.spring.crud.model;
+package com.spring.crud.model.request_dto;
 
 public record TeacherForRequest(String name) {
 }

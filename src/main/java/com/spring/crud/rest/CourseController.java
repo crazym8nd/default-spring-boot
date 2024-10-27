@@ -1,8 +1,8 @@
 package com.spring.crud.rest;
 
 import com.spring.crud.dao.entity.Course;
-import com.spring.crud.model.CourseForRequest;
-import com.spring.crud.model.CourseResponse;
+import com.spring.crud.model.request_dto.CourseForRequest;
+import com.spring.crud.model.response_dto.CourseResponse;
 import com.spring.crud.service.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
