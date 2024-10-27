@@ -1,11 +1,12 @@
 package com.spring.crud.dao.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -32,7 +33,7 @@ public class Department implements Persistable<Long> {
     private Instant updatedAt;
     private Status status;
 
-    @Transient
+    @OneToOne(mappedBy = "department", fetch = FetchType.LAZY)
     private Teacher headOfDepartment;
 
     @Override

@@ -7,11 +7,14 @@ import com.spring.crud.model.StudentResponse;
 import com.spring.crud.service.StudentService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/students")
@@ -27,5 +30,9 @@ public class StudentController {
         return studentMapper.studentToResponse(createdStudent);
     }
 
+    @GetMapping
+    public List<StudentResponse> getAllStudentsList() {
+        return studentService.getAllStudents().stream().map(studentMapper::studentToResponse).toList();
+    }
 
 }

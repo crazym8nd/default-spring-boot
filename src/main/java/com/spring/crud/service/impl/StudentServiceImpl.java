@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.Collections;
+import java.util.List;
 
 @Service
 @Slf4j
@@ -32,5 +33,10 @@ public class StudentServiceImpl implements StudentService {
                                              .updatedAt(now)
                                              .status(Status.ACTIVE)
                                              .build());
+    }
+
+    @Override
+    public List<Student> getAllStudents() {
+        return studentRepository.findAllWithCourses();
     }
 }

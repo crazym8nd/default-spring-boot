@@ -8,16 +8,18 @@ CREATE TABLE IF NOT EXISTS course_management.students (
     updated_at TIMESTAMPTZ,
     status SMALLINT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS course_management.courses (
+CREATE TABLE IF NOT EXISTS course_management.teachers (
     id         BIGSERIAL PRIMARY KEY,
-    title      VARCHAR(100) NOT NULL,
+    name       VARCHAR(100) NOT NULL,
+    department_id BIGINT,
     created_at TIMESTAMPTZ,
     updated_at TIMESTAMPTZ,
     status     SMALLINT     NOT NULL
 );
-CREATE TABLE IF NOT EXISTS course_management.teachers (
+CREATE TABLE IF NOT EXISTS course_management.courses (
     id         BIGSERIAL PRIMARY KEY,
-    name       VARCHAR(100) NOT NULL,
+    title      VARCHAR(100) NOT NULL,
+    teacher_id BIGINT,
     created_at TIMESTAMPTZ,
     updated_at TIMESTAMPTZ,
     status     SMALLINT     NOT NULL
@@ -25,6 +27,7 @@ CREATE TABLE IF NOT EXISTS course_management.teachers (
 CREATE TABLE IF NOT EXISTS course_management.departments (
     id         BIGSERIAL PRIMARY KEY,
     name       VARCHAR(100) NOT NULL,
+    head_of_department_id BIGINT,
     created_at TIMESTAMPTZ,
     updated_at TIMESTAMPTZ,
     status     SMALLINT     NOT NULL
