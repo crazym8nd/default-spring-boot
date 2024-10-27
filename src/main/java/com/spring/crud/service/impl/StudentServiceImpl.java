@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.Instant;
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Slf4j
@@ -38,5 +39,10 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public List<Student> getAllStudents() {
         return studentRepository.findAllWithCourses();
+    }
+
+    @Override
+    public Optional<Student> getStudentById(final Long studentId) {
+        return studentRepository.findById(studentId);
     }
 }
