@@ -13,8 +13,6 @@ import org.springframework.boot.testcontainers.service.connection.ServiceConnect
 import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.DynamicPropertyRegistry;
-import org.springframework.test.context.DynamicPropertySource;
 import org.springframework.test.web.reactive.server.WebTestClient;
 import org.testcontainers.containers.PostgreSQLContainer;
 
@@ -36,13 +34,6 @@ class StudentControllerIT {
             .withDatabaseName("testdb")
             .withUsername("testuser")
             .withPassword("testpassword");
-
-    @DynamicPropertySource
-    static void postgresqlProperties(final DynamicPropertyRegistry registry) {
-        registry.add("spring.datasource.url", postgreSQLContainer::getJdbcUrl);
-        registry.add("spring.datasource.username", postgreSQLContainer::getUsername);
-        registry.add("spring.datasource.password", postgreSQLContainer::getPassword);
-    }
 
     @Test
     void givenStudent_whenCreateStudent_thenSuccessResponse() {
