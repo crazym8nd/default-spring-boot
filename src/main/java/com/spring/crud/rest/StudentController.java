@@ -57,7 +57,7 @@ public class StudentController {
     }
 
     @DeleteMapping("{id}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @ResponseStatus(HttpStatus.OK)
     public InformationResponse deleteStudentById(@PathVariable @Nonnull final Long id) {
         return studentService.deleteStudentById(id);
     }
