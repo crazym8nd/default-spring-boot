@@ -1,5 +1,8 @@
 package com.spring.crud.exception;
 
+import lombok.Getter;
+
+@Getter
 public class StudentNotFoundException extends RuntimeException {
     private final String path;
 
@@ -8,7 +11,4 @@ public class StudentNotFoundException extends RuntimeException {
         this.path = path;
     }
 
-    public String getPath() {
-        return path;
-    }
 }
